@@ -47,8 +47,8 @@ class apiRenew(object):
               m= Path(lists.get(keys))
               if m.is_file(): 
                  m.unlink(missing_ok=True)
-              if info.pop(keys):
-                 yamler().save("rank/content.yaml", info)
+              if lists.pop(keys):
+                 yamler().save("rank/content.yaml", lists)
 
     def doData(self, newer):
         import time
