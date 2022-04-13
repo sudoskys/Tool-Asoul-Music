@@ -56,7 +56,7 @@ if task:
                 bvlist = []
                 if isinstance(task_todo, dict):
                     for n, u in enumerate(task_todo):
-                        bv = str(data.get(u).get("bvid"))
+                        bv = str(task_todo.get(u).get("bvid"))
                         bvlist.append(bv)
                 else:
                     for n, u in enumerate(task_todo):
