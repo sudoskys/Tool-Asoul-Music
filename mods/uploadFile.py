@@ -25,7 +25,8 @@ class Upload(object):
     def deal_audio_list(self, bvid_list, savePath, callback):
         infoList = infoGet().getInformation(bvid_list)
         sath = str(Path().cwd()) + savePath
-        for item in trange(infoList):
+        for v in trange(len(infoList)):
+            item=infoList[v]
             # print('Downloader Start!')
             st = time.time()
             musicPath = fileGet().getAudio(item, sath)
