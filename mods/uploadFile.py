@@ -31,7 +31,7 @@ class Upload(object):
             musicPath = fileGet().getAudio(item, sath)
             bvid, cid, title = item[0], item[1], item[2]
             callback.postAudio(musicPath, title + '\n' + 'https://www.bilibili.com/video/' + str(
-                bvid) + "\n #MusicFinder #Automatic #V5 ", )  # +
+                bvid) + "\n #MusicFinder #Automatic #V5 ", title)  # +
             # '\nSync  ' + '<a href="' + syncurl + '">link here</a>', mtitle)
             ed = time.time()
             # print('Download Finish! Time consuming:',str(round(ed-st,2))+' seconds')
