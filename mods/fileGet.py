@@ -18,7 +18,7 @@ class fileGet(object):
         table = str.maketrans(r'~!#$%^&,[]{}\/？?', '________________', "")
         return name.translate(table)
 
-    def getAudio(self, item, dirname, func):
+    def getAudio(self, item, dirname):
         baseUrl = 'http://api.bilibili.com/x/player/playurl?fnval=16&'
         if not os.path.exists(dirname):  # 判断是否存在文件夹如果不存在则创建为文件夹
             os.makedirs(dirname)
@@ -42,8 +42,7 @@ class fileGet(object):
         urllib.request.install_opener(opener)
         urllib.request.urlretrieve(url=audioUrl, filename=os.path.join(dirname, title + '.mp3'))
         ed = time.time()
-
-        func(os.path.join(dirname, title + '.mp3'))
         # 回调函数
         # print(str(round(ed-st,2))+' seconds download finish:',title)
         time.sleep(1)
+        return os.path.join(dirname, title + '.mp3'))
