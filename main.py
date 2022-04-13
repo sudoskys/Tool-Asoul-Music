@@ -44,6 +44,7 @@ if task:
         else:
             # 构建机器人实例
             push = robotPush(botToken, channalId)
+            Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
             # sync = onedrive(apptoken, appid, appkey)
             time.sleep(2)
             if not task_todo:
