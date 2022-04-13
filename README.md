@@ -20,7 +20,7 @@
 
 *自动抓取音乐二创并推送，支持手动模式。*
 
-重构自上游项目 BiliBiliVideoToMusic
+重构自上游项目 github.com/sudoskys/BiliBiliVideoToMusic
 
 
 
