@@ -3,7 +3,7 @@ import time
 from mods.urlGet import infoGet
 from mods.fileGet import fileGet
 from pathlib import Path
-from tqdm.notebook import trange
+# from tqdm.notebook import trange
 
 # 接受数据格式如下
 '''
@@ -25,8 +25,7 @@ class Upload(object):
     def deal_audio_list(self, bvid_list, savePath, callback):
         infoList = infoGet().getInformation(bvid_list)
         sath = str(Path().cwd()) + savePath
-        for v in trange(len(infoList)):
-            item=infoList[v]
+        for item in infoList:
             # print('Downloader Start!')
             st = time.time()
             musicPath = fileGet().getAudio(item, sath)
