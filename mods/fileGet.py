@@ -45,4 +45,4 @@ class fileGet(object):
         # 回调函数
         # print(str(round(ed-st,2))+' seconds download finish:',title)
         time.sleep(1)
-        return os.path.join(dirname, title + '.mp3'))
+        return os.path.join(dirname, title + '.mp3')
