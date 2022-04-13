@@ -1,11 +1,11 @@
 from pathlib import Path
 import yaml
-class yamler:
+class yamler(object):
     # sudoskys@github
     def __init__(self):
         self.debug = True
         self.home = Path().cwd()
-
+        
     def debug(self, log):
         if self.debug:
            print(log)
@@ -21,3 +21,5 @@ class yamler:
     def save(self, path, Data):
       with open(path, 'w+', encoding='utf-8') as f:
            yaml.dump(data=Data, stream=f, allow_unicode=True)
+
+
