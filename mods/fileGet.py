@@ -8,18 +8,34 @@ import requests
 class fileGet(object):
     def __init__(self):
         self.debug = False
+    def well(self, name):
+        # import string
+        name = name.replace('"', '_')  # 消除目标对路径的干扰
+        name = name.replace("'", '_')  # 消除目标对路径的干扰
+        # remove = string.punctuation
+        table = str.maketrans(r'~!#$%^&,[]{}\/？?', '________________', "")
+        '''
+        name = name.replace('/', '_')  # 消除目标对路径的干扰
+        name = name.replace('"', '_')  # 消除目标对路径的干扰
+        name = name.replace("'", '_')  # 消除目标对路径的干扰
+        name = name.replace('/', '_')  # 消除目标对路径的干扰
+        name = name.replace('"', '_')  # 消除目标对路径的干扰
+        name = name.replace("'", '_')  # 消除目标对路径的干扰
+        '''
+        return name.translate(table)
+
     def getAudio(self,infoList, dirname):
         baseUrl='http://api.bilibili.com/x/player/playurl?fnval=16&'
 
         if not os.path.exists(dirname):  #判断是否存在文件夹如果不存在则创建为文件夹
             os.makedirs(dirname)
-
+            
         for item in infoList:
             st=time.time()
             bvid,cid,title=item[0],item[1],item[2]
             url=baseUrl+'bvid='+bvid+'&cid='+cid
             # print(url)
-
+            title = self.well(title) 
             audioUrl=requests.get(url).json()['data']['dash']['audio'][0]['baseUrl']
 
             opener = urllib.request.build_opener()

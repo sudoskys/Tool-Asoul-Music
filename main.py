@@ -5,6 +5,7 @@ import shutil
 
 from mods.urlGet import infoGet
 from mods.fileGet import fileGet
+from pathlib import Path
 
 
 BVList=[
@@ -16,9 +17,10 @@ BVList=[
 
 def deal_audio(bvid_list,savePath):    
     print('Downloader Start!')
-    st=time.time()
-    fileGet().getAudio(infoGet().getInformation(bvid_list), savePath)
-    ed=time.time()
+    sath = str(Path().cwd()) + savePath
+    st = time.time()
+    fileGet().getAudio(infoGet().getInformation(bvid_list), sath)
+    ed = time.time()
     print('Download Finish All! Time consuming:',str(round(ed-st,2))+' seconds')
 
-deal_audio(BVList,'/test')
+deal_audio(BVList,'/music')
