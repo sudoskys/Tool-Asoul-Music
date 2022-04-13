@@ -2,26 +2,27 @@
 
 import requests
 
+
 class infoGet(object):
     def __init__(self):
         self.debug = False
 
-    def getCidAndTitle(self,bvid,p=1):
-        url='https://api.bilibili.com/x/web-interface/view?bvid=' + bvid
-        data=requests.get(url).json()['data']
-        title=data['title']
-        cid=data['pages'][p-1]['cid']
-        return str(cid),title
+    def getCidAndTitle(self, bvid, p=1):
+        url = 'https://api.bilibili.com/x/web-interface/view?bvid=' + bvid
+        data = requests.get(url).json()['data']
+        title = data['title']
+        cid = data['pages'][p - 1]['cid']
+        return str(cid), title
 
-    def getInformation(self,bvList):
-        infoList=[]
+    def getInformation(self, bvList):
+        infoList = []
         for bvid in bvList:
-            item=[]
+            item = []
             if len(bvid) == 12:
-                cid,title=self.getCidAndTitle(bvid)
+                cid, title = self.getCidAndTitle(bvid)
                 item.append(bvid)
             else:
-                cid,title=self.getCidAndTitle(bvid[:12],int(bvid[13:]))
+                cid, title = self.getCidAndTitle(bvid[:12], int(bvid[13:]))
                 item.append(bvid[:12])
             item.append(cid)
             item.append(title)
@@ -31,16 +32,16 @@ class infoGet(object):
 
         return infoList
 
-    def getMutipleInformation(self,bvid):
-        url='https://api.bilibili.com/x/web-interface/view?bvid=' + bvid
+    def getMutipleInformation(self, bvid):
+        url = 'https://api.bilibili.com/x/web-interface/view?bvid=' + bvid
         data = requests.get(url).json()['data']
         # base_title = data['title']
-        infoList=[]
+        infoList = []
         for page in data['pages']:
             # print(page)
             title = page['part']
             cid = str(page['cid'])
             item = [bvid, cid, title]
             infoList.append(item)
-        
+
         return infoList

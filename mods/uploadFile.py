@@ -1,3 +1,5 @@
+import time
+
 from mods.urlGet import infoGet
 from mods.fileGet import fileGet
 from pathlib import Path
@@ -12,31 +14,33 @@ BVList=[
 #     'BV17y4y167xu','BV1wD4y1X7fP','BV1wV41117GP']
 '''
 
+
 class Upload(object):
     def __init__(self):
         self.debug = False
-        
-#    def callback(self,filePath):
-#        print(filePath)
 
-    def deal_audio_list(self,bvid_list,savePath,callback):  
-        infoList=infoGet().getInformation(bvid_list)
+    #    def callback(self,filePath):
+    #        print(filePath)
+
+    def deal_audio_list(self, bvid_list, savePath, callback):
+        infoList = infoGet().getInformation(bvid_list)
         sath = str(Path().cwd()) + savePath
         for item in trange(infoList):
-            #print('Downloader Start!')        
+            # print('Downloader Start!')
             st = time.time()
             musicPath = fileGet().getAudio(item, sath)
-            bvid,cid,title=item[0],item[1],item[2]
-            callback.postAudio(musicPath, title + '\n' + 'https://www.bilibili.com/video/' +str(bvid) + "\n #MusicFinder #Automatic #V5 ",) #+
-                    #'\nSync  ' + '<a href="' + syncurl + '">link here</a>', mtitle)
+            bvid, cid, title = item[0], item[1], item[2]
+            callback.postAudio(musicPath, title + '\n' + 'https://www.bilibili.com/video/' + str(
+                bvid) + "\n #MusicFinder #Automatic #V5 ", )  # +
+            # '\nSync  ' + '<a href="' + syncurl + '">link here</a>', mtitle)
             ed = time.time()
-            #print('Download Finish! Time consuming:',str(round(ed-st,2))+' seconds')
+            # print('Download Finish! Time consuming:',str(round(ed-st,2))+' seconds')
+
 
 # Upload().deal_audio_list(BVList,'/music')
 
 
-
-
+'''
 class onedrive(object):
     # robotPush(token,groupID).postAudio(fileroad,info,name):
     def __init__(self, pri, zuhuid, keyid):
@@ -78,6 +82,7 @@ class onedrive(object):
         con = self.zras.encrypt_by_public_key(tokens).decode('utf-8')
         with open(useTool().filesafer("o365_token.txt"), 'w+') as f:
             f.write(con)
+'''
 
 
 # 机器人实例
@@ -98,7 +103,7 @@ class robotPush(object):
             self.BOT.send_video(self.objectID, video, source, name, name)
             # '#音乐MV #AUTOrunning '+str(source)+"   "+name
             # 显示要求为MP4--https://mlog.club/article/5018822
-            #print("============Already upload this video============")
+            # print("============Already upload this video============")
             video.close()
             return file
 
@@ -107,6 +112,6 @@ class robotPush(object):
             audio = open(file, 'rb')
             self.BOT.send_audio(self.objectID, audio, source, name, name)
             # '#音乐提取 #AUTOrunning '+str(source)+"   "+name
-            #print("============ALready upload this flac============")
+            # print("============ALready upload this flac============")
             audio.close()
             return file

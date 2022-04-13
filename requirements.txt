@@ -3,3 +3,5 @@ pyyaml
 pathlib
 tqdm
 pycrypto
+pyTelegramBotAPI
+O365
