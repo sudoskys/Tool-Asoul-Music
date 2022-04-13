@@ -18,10 +18,10 @@ class infoGet(object):
         for bvid in bvList:
             item=[]
             if len(bvid) == 12:
-                cid,title=getCidAndTitle(bvid)
+                cid,title=self.getCidAndTitle(bvid)
                 item.append(bvid)
             else:
-                cid,title=getCidAndTitle(bvid[:12],int(bvid[13:]))
+                cid,title=self.getCidAndTitle(bvid[:12],int(bvid[13:]))
                 item.append(bvid[:12])
             item.append(cid)
             item.append(title)

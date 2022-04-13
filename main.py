@@ -17,8 +17,8 @@ BVList=[
 def deal_audio(bvid_list,savePath):    
     print('Downloader Start!')
     st=time.time()
-    getAudio(getInformation(bvid_list), savePath)
+    fileGet().getAudio(infoGet().getInformation(bvid_list), savePath)
     ed=time.time()
     print('Download Finish All! Time consuming:',str(round(ed-st,2))+' seconds')
 
-deal_audio(BVList,'./test')
+deal_audio(BVList,'/test')
