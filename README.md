@@ -1,9 +1,11 @@
 # Tool-Asoul-Music
+
 A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.
 
+>重构自上游项目 BiliBiliVideoToMusic
 
-## BiliBiliVideoToMusic
-![counter](https://count.getloli.com/get/@sudoskys-github-BiliBiliVideoToMusic?theme=moebooru)
+
+![a](https://i0.hdslb.com/bfs/article/92aa64792d2d2fdf7e7bba708ca246030336fa09.jpg)
 
 [![Apache License 2.0 License](https://img.shields.io/badge/LICENSE-Apache2-ff69b4)](https://github.com/sudoskys/Tool-Asoul-Music/blob/main/LICENSE)  ![u](https://img.shields.io/badge/USE-python-green)   [![s](https://img.shields.io/badge/Sponsor-Alipay-ff69b4)](https://azz.net/ly233)
 
@@ -95,12 +97,14 @@ Github action每天6:20运行一次流程，仓库主人加星也会触发流程
 - [RSShub](https://docs.rsshub.app/) |数据源RSS|
 
 
-## 支持
-THIS link: https://azz.net/ly233
-[![](https://static01.imgkr.com/temp/5808cb7e9e6340409bd07afc0e5ca723.png)](https://azz.net/ly233)
+
+------------------------------
+![counter](https://count.getloli.com/get/@sudoskys-github-AsoulMusic?theme=moebooru)
+
+
 
 ------------------------------
 
-![a](https://i0.hdslb.com/bfs/article/92aa64792d2d2fdf7e7bba708ca246030336fa09.jpg)
-
+>支持
+https://azz.net/ly233
 
