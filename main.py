@@ -20,8 +20,7 @@ if data.get('Lock'):
     from mods import locker
     import sys
     keyword = sys.argv[1]
-    botToken=AESlock().decrypt_oralce(botToken.encode('utf-8'),keyword)
-    botToken = botToken.decode("utf-8")
+    botToken=AESlock().decrypt(str(keyword),botToken.encode('utf-8'))
     
 
 

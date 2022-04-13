@@ -31,17 +31,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine bs4 requests tabulate mutagen pydub you_get moviepy pyTelegramBotAPI feedparser ruamel.yaml O365 rsa~=4.8
-  
+        pip install -r requirements.txt
     - name: Run
       run: |
-        python gitPush.py ${{ secrets.token }} ${{ secrets.objectID }} ${{ secrets.rssurl }} ${{ secrets.apptokens }} ${{ secrets.appids }} ${{ secrets.appkeys }}
-   
-    - name: RUN Atuo
-      continue-on-error: true
-      run: |
-        python autoApiRun.py  ${{ secrets.token }} ${{ secrets.objectID }} ${{ secrets.rssurl }} ${{ secrets.apptokens }} ${{ secrets.appids }} ${{ secrets.appkeys }}
-    
+        python main.py ${{ secrets.key }}
+
     - name: commit
       env:
         TZ: 'CST-8'
@@ -52,7 +46,7 @@ jobs:
         git config --global user.name sudoskys
         datime=$(date "+%Y年%m月%d日 %H:%M")
         echo "git commit: 上传于 $datime"
-       
+  
         if [ -n "$(git status -s)" ];then
             # git pull
             git add .
