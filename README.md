@@ -79,32 +79,57 @@ Tips: 如果您使用action部署，建议只设置提取flac。
 
 *Add Repository secrets*
 ```
-
+${{ secrets.key }}
 ```
 
 *Add Environment secrets*
 ```
+${{ secrets.GITHUB_TOKEN }}
+${{ secrets.GITHUB_EMAIL }}
 
 ```
 
 * 说明
-Github action每天6:20运行一次流程，仓库主人加星也会触发流程.
+Github action每天6:20运行一次流程（需要手动设置），仓库主人加星也会触发流程.
 
 
 
 
 ## 实现逻辑
 
-
+分离了请求与推送，采用队列制，可以方便开发与扩展。
 
 
 ### 目录结构描述
 ```
-
+.
+├── authkey
+│    └── onedrive.token  //onedrive的token密文
+├── config.yaml  //配置文件
+├── data
+│    └── history.yaml   //历史记录
+├── LICENSE  //协议
+├── main.py  //主程序
+├── mods
+│    ├── core.py  //基础函数
+│    ├── fileGet.py  //文件获取
+│    ├── locker.py   //加密安全函数
+│    ├── Runner    //api相关
+│    │    └── renew.py
+│    ├── uploadFile.py  //推送
+│    └── urlGet.py  //解析cid
+├── rank   //队列实现
+│    └── waiter
+│        └── init.lck  //定位目录的锚点
+├── README.md   //介绍
+└── requirements.txt 
 
 ```
 
 ## TODO
+- [ x ] 重构代码结构
+- [ x ] 优化冗余代码
+- [ x ] 优化实现流程
 - [ ] 重构 1 次
 - [ ] 重构 2 次
 - [ ] 重构 3 次
