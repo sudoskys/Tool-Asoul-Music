@@ -19,7 +19,7 @@ class apiRenew(object):
 
     def clearTask(self, files):
         m=Path('rank/waiter/init.lck')
-        file_list[path for path in m.glob('*.yaml')]
+        file_list=[path for path in m.glob('*.yaml')]
         try:
             for i, k in enumerate(file_list):
                 Path(k).unlink(missing_ok=True)
