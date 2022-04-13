@@ -7,19 +7,20 @@
 
 
 [![Apache License 2.0 License](https://img.shields.io/badge/LICENSE-Apache2-ff69b4)](https://github.com/sudoskys/Tool-Asoul-Music/blob/main/LICENSE)  ![u](https://img.shields.io/badge/USE-python-green)   [![s](https://img.shields.io/badge/Sponsor-Alipay-ff69b4)](https://azz.net/ly233) 
-![v](https://img.shields.io/badge/Version-220415-9cf)  
+
+![v](https://img.shields.io/badge/Version-220415-9cf)   **[中文](README.md)**
 
 
 *A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
+
 *自动抓取音乐二创并推送，支持手动模式。*
 
->重构自上游项目 BiliBiliVideoToMusic
+重构自上游项目 BiliBiliVideoToMusic
 
-----------------------
-**[中文](README.md)**
+
 
 ## 开始
-------------------------------
+
 ### 1. 安装要求
 **Python 3.7 或更高版本** 
 ```
