@@ -1,27 +1,26 @@
 # Tool-Asoul-Music
 
-A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.
-
->重构自上游项目 BiliBiliVideoToMusic
-
 
 ![a](https://s1.328888.xyz/2022/04/13/fPSGZ.jpg)
 
-[![Apache License 2.0 License](https://img.shields.io/badge/LICENSE-Apache2-ff69b4)](https://github.com/sudoskys/Tool-Asoul-Music/blob/main/LICENSE)  ![u](https://img.shields.io/badge/USE-python-green)   [![s](https://img.shields.io/badge/Sponsor-Alipay-ff69b4)](https://azz.net/ly233)
-
-![v](https://img.shields.io/badge/Version-220209-9cf)  
-
-### [English](README.md)  | [中文](README-CN.md) 
+------------------------------------
 
 
-## 介绍
+[![Apache License 2.0 License](https://img.shields.io/badge/LICENSE-Apache2-ff69b4)](https://github.com/sudoskys/Tool-Asoul-Music/blob/main/LICENSE)  ![u](https://img.shields.io/badge/USE-python-green)   [![s](https://img.shields.io/badge/Sponsor-Alipay-ff69b4)](https://azz.net/ly233) 
+![v](https://img.shields.io/badge/Version-220415-9cf)  
 
-自动抓取音乐二创并推送，支持手动模式。
 
+*A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
+*自动抓取音乐二创并推送，支持手动模式。*
+
+>重构自上游项目 BiliBiliVideoToMusic
+
+----------------------
+**[中文](README.md)**
 
 ## 开始
+------------------------------
 ### 1. 安装要求
-
 **Python 3.7 或更高版本** 
 ```
 
@@ -37,21 +36,18 @@ pip install -r requirements.txt
 
 
 ### 2. 准备
-
 #### 部署运行
-
 **配置程序设置文件**
 - 配置目标关键词
 
 - 配置Onedrive同步服务
 
-
 - 配置音乐频道推送服务
-1.申请一个Bot
-
+1.申请一个Bot,向BotFather索取Token
+2.使用ID机器人查看目标频道ID
+3.将机器人添加至频道并只赋予发消息权限
 
 #### 托管 Github Action （不推荐）
-
 * Fork 本仓库并设置secrets
 Tips: 如果您使用action部署，建议只设置提取flac。
 配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。（申请地址[github openapi token](https://github.com/settings/tokens/new)

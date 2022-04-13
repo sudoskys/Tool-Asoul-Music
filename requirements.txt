@@ -1,2 +1,4 @@
 requests
 urllib
+pyyaml
+pathlib
