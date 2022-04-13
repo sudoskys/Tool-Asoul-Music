@@ -18,7 +18,7 @@ channalId = str(data.get("channalId")) # 从getid bot那里看
 
 if data.get('Lock'):
     print("unLocking")
-    from mods import locker
+    from mods.locker import AESlock
     import sys
     keyword = sys.argv[1]
     botToken=AESlock().decrypt(str(keyword),botToken.encode('utf-8'))
