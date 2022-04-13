@@ -1,15 +1,20 @@
-# Tool-Asoul-Music
 
 
 ![a](https://s1.328888.xyz/2022/04/13/fPSGZ.jpg)
 
 ------------------------------------
 
+<p align="center">
+  <a href="https://img.shields.io/badge/LICENSE-Apache2-ff69b4"><img alt="License" src="https://img.shields.io/badge/LICENSE-Apache2-ff69b4"></a>
+  <img src="https://img.shields.io/badge/USE-python-green" alt="PYTHON" >
+  <img src="https://img.shields.io/badge/Version-220415-9cf" alt="V" >
+  <a href="https://azz.net/ly233"><img src="https://img.shields.io/badge/Sponsor-Alipay-ff69b4" alt="SPONSOR"></a>
+</p>
 
-[![Apache License 2.0 License](https://img.shields.io/badge/LICENSE-Apache2-ff69b4)](https://github.com/sudoskys/Tool-Asoul-Music/blob/main/LICENSE)  ![u](https://img.shields.io/badge/USE-python-green)   [![s](https://img.shields.io/badge/Sponsor-Alipay-ff69b4)](https://azz.net/ly233) 
 
-![v](https://img.shields.io/badge/Version-220415-9cf)   **[中文](README.md)**
+<h2 align="center">Tool-Asoul-Music</h2>
 
+**[中文](README.md)**
 
 *A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
 
@@ -54,16 +59,15 @@ Tips: 如果您使用action部署，建议只设置提取flac。
 配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。（申请地址[github openapi token](https://github.com/settings/tokens/new)
 
 
-**Add Repository secrets**
+*Add Repository secrets*
 ```
 
 ```
 
-**Add Environment secrets**
+*Add Environment secrets*
 ```
 
 ```
-
 
 * 说明
 Github action每天6:20运行一次流程，仓库主人加星也会触发流程.
