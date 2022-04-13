@@ -1,0 +1,66 @@
+# This workflow can upload some music file
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+# ⚠ Please do not deploy directly on the Github Action service, the yml of this repository is used for task flow usability testing
+# ⚠ 请不要直接部署在Github Action服务上，本仓库的yml用作任务流可用性测试  https://www.blueskyxn.com/202107/4731.html
+
+name: Update musicnie
+
+on: 
+#  schedule:
+#      - cron: '0 22 * * *'
+  watch:
+      types: [started]
+jobs:
+  mew:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    steps:
+    - uses: actions/checkout@v2
+    - uses: FedericoCarboni/setup-ffmpeg@v1
+      with:
+        # Not strictly necessary, but it may prevent rate limit.
+        # errors especially on GitHub-hosted macos machines.
+        token: ${{ secrets.GITHUB_TOKEN }}
+      id: setup-ffmpeg
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine bs4 requests tabulate mutagen pydub you_get moviepy pyTelegramBotAPI feedparser ruamel.yaml O365 rsa~=4.8
+        # asyncio aiohttp
+    - name: Run
+      run: |
+        python gitPush.py ${{ secrets.token }} ${{ secrets.objectID }} ${{ secrets.rssurl }} ${{ secrets.apptokens }} ${{ secrets.appids }} ${{ secrets.appkeys }}
+    - name: Renew api
+      continue-on-error: true
+      run: |
+        python autoApiRenew.py
+        # after renew must run auto ，or will create many same data
+    - name: RUN Atuo
+      continue-on-error: true
+      run: |
+        python autoApiRun.py  ${{ secrets.token }} ${{ secrets.objectID }} ${{ secrets.rssurl }} ${{ secrets.apptokens }} ${{ secrets.appids }} ${{ secrets.appkeys }}
+    - name: commit
+      env:
+        TZ: 'CST-8'
+        emails: ${{ secrets.GITHUB_EMAIL }}
+      run: |
+        sudo timedatectl set-timezone Asia/Shanghai
+        git config --global user.email emails
+        git config --global user.name sudoskys
+        datime=$(date "+%Y年%m月%d日 %H:%M")
+        echo "git commit: 上传于 $datime"
+       
+        if [ -n "$(git status -s)" ];then
+            # git pull
+            git add .
+            git commit -m "自动化魔法阵上传 $datime" -a
+        fi
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
