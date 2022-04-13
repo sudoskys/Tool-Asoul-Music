@@ -28,11 +28,10 @@
 
 ### 1. 安装要求
 **Python 3.7 或更高版本** 
-```
 
+```shell
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-
 ```
 
 - FFmpeg环境 [ffmpeg](https://ffmpeg.org/download.html#get-packages)。
@@ -92,8 +91,11 @@ ${{ secrets.GITHUB_EMAIL }}
 * 说明
 Github action每天6:20运行一次流程（需要手动设置），仓库主人加星也会触发流程.
 
+**运行**
 
-
+```shell
+python main.py
+```
 
 ## 实现逻辑
 
@@ -127,9 +129,9 @@ Github action每天6:20运行一次流程（需要手动设置），仓库主人
 ```
 
 ## TODO
-- [ x ] 重构代码结构
-- [ x ] 优化冗余代码
-- [ x ] 优化实现流程
+- [x] 重构代码结构
+- [x] 优化冗余代码
+- [x] 优化实现流程
 - [ ] 重构 1 次
 - [ ] 重构 2 次
 - [ ] 重构 3 次
