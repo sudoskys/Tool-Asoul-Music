@@ -44,14 +44,32 @@ pip install -r requirements.txt
 ### 2. 准备
 #### 部署运行
 **配置程序设置文件**
-- 配置目标关键词
 
-- 配置Onedrive同步服务
+*USE config.yaml*
+```yaml
+Running: true
+channalId: -10086
+onedrive: {statu: open, target: authkey/onedrive.token}
+search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
+
+```
+
+- 配置搜索字段
+```yaml
+search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
+```
+- 配置Onedrive同步
+```yaml
+onedrive: {statu: open, target: authkey/onedrive.token}
+```
 
 - 配置音乐频道推送服务
 1.申请一个Bot,向BotFather索取Token
 2.使用ID机器人查看目标频道ID
 3.将机器人添加至频道并只赋予发消息权限
+```yaml
+channalId: -youchannalIDnumberhere
+```
 
 #### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
