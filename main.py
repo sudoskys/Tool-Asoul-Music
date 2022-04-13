@@ -8,6 +8,7 @@ from mods.Runner.renew import apiRenew
 from mods.core import yamler
 from mods.uploadFile import robotPush
 from mods.uploadFile import Upload
+from pathlib import Path
 
 # 加载配置
 data = yamler().read(str(Path.cwd())+"config.yaml")
