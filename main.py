@@ -40,6 +40,11 @@ if RES:
 
 
 
+# 推送机器人
+push = robotPush(botToken, channalId)
+
+#RSS
+
 from mods.rssKit import rssParse
 if rss.get('statu')=='True':
     Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
@@ -54,7 +59,7 @@ if rss.get('statu')=='True':
         else:
             print("RSS No New Data")
     except BaseException as arg:
-        robotPush(botToken, channalId).sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
+        push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
     finally:
         shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
         # mLog("err", "Fail " + n + '  -' + u).wq()
@@ -71,8 +76,6 @@ if task:
         if not all([botToken, channalId]):
             raise Exception("参数不全!")
         else:
-            # 构建机器人实例
-            push = robotPush(botToken, channalId)
             Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
             # sync = onedrive(apptoken, appid, appkey)
             if not task_todo:
