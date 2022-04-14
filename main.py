@@ -11,15 +11,16 @@ from mods.uploadFile import Upload
 from pathlib import Path
 
 # 加载配置
-datas = yamler().read(os.getcwd() + "/config.yaml")
-looking = datas.get("search")  # 探测器传入的数据
-botToken = str(datas.get('botToken'))  # 机器人token ，从botfather那里拿
-channalId = str(datas.get("channalId"))  # 从getid bot那里看
+data = yamler().read(str(Path.cwd()) + "/config.yaml")
+looking = data.get("search")  # 探测器传入的数据
+botToken = str(data.get('botToken'))  # 机器人token ，从botfather那里拿
+channalId = str(data.get("channalId"))  # 从getid bot那里看
 
-if datas.get('Lock'):
+if data.get('Lock'):
     print("unLocking")
     from mods.locker import AESlock
     import sys
+
     keyword = sys.argv[1]
     botToken = AESlock().decrypt(str(keyword), botToken.encode('utf-8'))
 
@@ -28,7 +29,7 @@ RES = apiRenew().apiInit(looking)
 if RES:
     key = apiRenew().doData(RES)
     if key:
-        print(key)
+        print('开始执行 '+key)
         # apiRenew().cancelTask(key)
 
 # 处理
@@ -47,7 +48,8 @@ if task:
             # sync = onedrive(apptoken, appid, appkey)
             time.sleep(2)
             if not task_todo:
-                print("Today nothing to do")
+                print("Tasker nothing to do")
+                apiRenew().cancelTask(k)
                 # sync.lock_token()
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
             else:
@@ -68,10 +70,9 @@ if task:
                 except BaseException as arg:
                     push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
+                else:
+                    apiRenew().cancelTask(k)
                 # sync.lock_token()
-                from mods.Runner.renew import apiRenew
-
-                apiRenew().cancelTask(k)
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除存储的视频文件
 
 # channal id ,please use @getidsbot get this value!
