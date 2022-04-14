@@ -69,7 +69,7 @@ channalId: -youchannalIDnumberhere
 
 ### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
-Tips: 如果您使用action部署，建议只设置提取flac。
+Tips: 如果您使用action部署，请注意风控策略。
 配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。（申请地址[github openapi token](https://github.com/settings/tokens/new)
 
 
@@ -85,14 +85,18 @@ ${{ secrets.GITHUB_EMAIL }}
 
 ```
 
-* 说明
-Github action每天6:20运行一次流程（需要手动设置），仓库主人加星也会触发流程.
 
 **运行**
 
 ```shell
-python main.py
+python main.py IfYouSetPassword
 ```
+
+- Github Action
+Github action 可以每天6:20运行一次流程（这需要手动取消yaml文件注释），仓库主人加星会触发流程.
+
+
+
 
 ### Colab 调试
 
