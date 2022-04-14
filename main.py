@@ -20,7 +20,7 @@ if rss.get('statu'):
     rssAddress = rss.get('RssAddressToken')
         
 
-if data.get('Lock')=="True":
+if data.get('Lock'):
     print("加密模式启用中--")
     from mods.locker import AESlock
     import sys
@@ -46,7 +46,7 @@ push = robotPush(botToken, channalId)
 #RSS
 
 from mods.rssKit import rssParse
-if rss.get('statu')=='True':
+if rss.get('statu'):
     print("RSS启用中--")
     Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
     items=rssParse().getItem(rssAddress)
@@ -65,6 +65,8 @@ if rss.get('statu')=='True':
         shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
         # mLog("err", "Fail " + n + '  -' + u).wq()
     #rssgeter
+else:
+    print("RSS已经关闭--")
 
 
 # 处理
