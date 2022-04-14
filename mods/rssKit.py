@@ -45,6 +45,7 @@ class rssParse(object):
 
     @staticmethod
     def get_bili_id(bili_url):
+        import re
         """ 判断传入链接的类型,并获取id """
         url_re = self.b32_url(bili_url) if "b23.tv" in bili_url else bili_url
         list_re = re.split("/", url_re)
