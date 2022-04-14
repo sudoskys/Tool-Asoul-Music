@@ -56,7 +56,7 @@ class fileGet(object):
         st = time.time()
         bvid, cid, title = item[0], item[1], item[2]
         apiUrl = baseUrl + 'bvid=' + bvid + '&cid=' + cid
-        print(apiUrl)
+        print(title+ '---'+str(bvid) + '---->'+apiUrl)
         title = self.well(title)
         audioSong = requests.get(url=apiUrl, headers=self.header).json()
         if not audioSong.get("code")==0:

@@ -49,7 +49,7 @@ from mods.rssKit import rssParse
 if rss.get('statu'):
     print("RSS启用中--")
     Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
-    items=rssParse().getItem(rssAddress)
+    items=rssParse(path=os.getcwd()+'/data/RssData.json').getItem(rssAddress)
     rssBvidItem=[]
     if items:
         for k,v in items.items():
@@ -107,3 +107,6 @@ if task:
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除存储的视频文件
 
 # channal id ,please use @getidsbot get this value!
+
+
+print("请注意保存data文件夹中的文件...防止重复推送")
