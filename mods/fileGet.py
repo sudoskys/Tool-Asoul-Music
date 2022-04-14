@@ -31,14 +31,14 @@ class fileGet(object):
     def well(self, name):
         # import string
         name = name.replace('"', '_')  # 消除目标对路径的干扰
-        name = name.replace("'", '_')  # 消除目标对路径的干扰
+        name = name.replace("'", '_')
         # remove = string.punctuation
         table = str.maketrans(r'~!#$%^&,[]{}\/？?', '________________', "")
         return name.translate(table)
 
     def getAudio(self, item, dirname):
         baseUrl = 'https://api.bilibili.com/x/player/playurl?fnval=16&'
-        if not os.path.exists(dirname):  # 判断是否存在文件夹如果不存在则创建为文件夹
+        if not os.path.exists(dirname):  # 创建为文件夹
             os.makedirs(dirname)
         st = time.time()
         bvid, cid, title = item[0], item[1], item[2]
