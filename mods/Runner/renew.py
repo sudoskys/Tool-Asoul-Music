@@ -43,12 +43,12 @@ class apiRenew(object):
     def cancelTask(self, keys):
         lists = yamler().read("rank/content.yaml")
         if lists:
-           if lists.get(keys):
-              m= Path(lists.get(keys))
-              if m.is_file(): 
-                 m.unlink()
-              if lists.pop(keys):
-                 yamler().save("rank/content.yaml", lists)
+            if lists.get(keys):
+                m= Path(lists.get(keys))
+                if m.is_file(): 
+                    m.unlink()
+                if lists.pop(keys):
+                    yamler().save("rank/content.yaml", lists)
 
     def doData(self, newer):
         import time

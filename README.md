@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 
 ### 2. 准备
-#### 部署运行
+### 本地部署运行
 **配置程序设置文件**
 
 *USE config.yaml*
@@ -70,7 +70,7 @@ onedrive: {statu: open, target: authkey/onedrive.token}
 channalId: -youchannalIDnumberhere
 ```
 
-#### 托管 Github Action （不推荐）
+### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
 Tips: 如果您使用action部署，建议只设置提取flac。
 配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。（申请地址[github openapi token](https://github.com/settings/tokens/new)
@@ -97,32 +97,44 @@ Github action每天6:20运行一次流程（需要手动设置），仓库主人
 python main.py
 ```
 
+### Colab 调试
+
+```
+!rm -f -r /content/*
+!git clone https://github.com/sudoskys/Tool-Asoul-Music
+!rsync -r /content/Tool-Asoul-Music/* /content/
+!python -m pip install --upgrade pip
+!pip3 install -r requirements.txt
+```
+
 ## 实现逻辑
 
 分离了请求与推送，采用队列制，可以方便开发与扩展。
+
 
 
 ### 目录结构描述
 ```
 .
 ├── authkey
-│    └── onedrive.token  //onedrive的token密文
-├── config.yaml  //配置文件
+│    └── onedrive.token  // onedrive的token密文
+├── config.yaml  // 配置文件
 ├── data
-│    └── history.yaml   //历史记录
-├── LICENSE  //协议
-├── main.py  //主程序
+│    └── history.yaml   // 历史记录
+├── LICENSE  // 协议
+├── main.py  // 主程序
 ├── mods
-│    ├── core.py  //基础函数
-│    ├── fileGet.py  //文件获取
-│    ├── locker.py   //加密安全函数
-│    ├── Runner    //api相关
+│    ├── core.py  // 基础函数
+│    ├── fileGet.py  // 文件获取
+│    ├── locker.py   // 加密安全算法
+│    ├── Runner    // api相关
 │    │    └── renew.py
-│    ├── uploadFile.py  //推送
-│    └── urlGet.py  //解析cid
-├── rank   //队列实现
+│    ├── uploadFile.py  // 推送
+│    └── urlGet.py  // 解析cid
+├── rank   // 队列实现
 │    └── waiter
-│        └── init.lck  //定位目录的锚点
+│    │   └── init.lck  // 定位目录的锚点
+│    └── content.yaml  // 队列索引
 ├── README.md   //介绍
 └── requirements.txt 
 
@@ -132,25 +144,25 @@ python main.py
 - [x] 重构代码结构
 - [x] 优化冗余代码
 - [x] 优化实现流程
+- [ ] 支持手动添加
+- [ ] 支持同步OD盘
 - [ ] 重构 1 次
 - [ ] 重构 2 次
 - [ ] 重构 3 次
 
 ## 鸣谢
 
-- [bilibiliDownloader](https://github.com/liuyunhaozz/bilibiliDownloader)|下载部分|
+- [BilibiliDownloader](https://github.com/liuyunhaozz/bilibiliDownloader)|下载部分参考|
 - [O365](https://github.com/O365/python-o365) |微软云盘同步实现|
 - [RSShub](https://docs.rsshub.app/) |数据源RSS|
 
 
 
 ------------------------------
+
 ![counter](https://count.getloli.com/get/@sudoskys-github-AsoulMusic?theme=moebooru)
-
-
 
 ------------------------------
 
->支持
-https://azz.net/ly233
+>支持 https://azz.net/ly233
 

@@ -20,7 +20,6 @@ if data.get('Lock'):
     print("unLocking")
     from mods.locker import AESlock
     import sys
-
     keyword = sys.argv[1]
     botToken = AESlock().decrypt(str(keyword), botToken.encode('utf-8'))
 
@@ -53,8 +52,8 @@ if task:
                 # sync.lock_token()
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
             else:
-                print(task_todo)
-                print(type(task_todo))
+                # print(task_todo)
+                # print(type(task_todo))
                 # 传入
                 bvlist = []
                 if isinstance(task_todo, dict):
