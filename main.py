@@ -53,20 +53,17 @@ if task:
                 # sync.lock_token()
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
             else:
-                # print(task_todo)
+                print(task_todo)
+                print(type(task_todo))
                 # 传入
                 bvlist = []
                 if isinstance(task_todo, dict):
                     for n, u in enumerate(task_todo):
-                        bv = str(task_todo.get(u).get("bvid"))
-                        bvlist.append(bv)
-                else:
-                    for n, u in enumerate(task_todo):
-                        bv = str(u.get("bvid"))
-                        bvlist.append(bv)
+                        # bv = str(task_todo.get(u).get("bvid"))
+                        bvlist.append(u)
                 try:
+                    #print(bvlist)
                     Upload().deal_audio_list(bvlist, '/music', push)
-                    # dealUrl(n, urls, push, sync)
                 except BaseException as arg:
                     push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
