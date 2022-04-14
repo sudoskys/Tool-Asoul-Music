@@ -27,17 +27,14 @@
 ## 开始
 
 ### 1. 安装要求
-**Python 3.7 或更高版本** 
 
+**Python 3.7 或更高版本** 
 ```shell
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
-
-- FFmpeg环境 [ffmpeg](https://ffmpeg.org/download.html#get-packages)。
-（仓库Action使用 https://github.com/marketplace/actions/setup-ffmpeg ）
-
-* 本地使用运行 `pip install -r requirements.txt`来安装必要包
+（可选）FFmpeg环境
+ [ffmpeg 环境下载](https://ffmpeg.org/download.html#get-packages)。 （仓库Action使用 https://github.com/marketplace/actions/setup-ffmpeg ）
 
 
 ### 2. 准备
