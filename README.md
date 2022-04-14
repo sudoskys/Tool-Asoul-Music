@@ -45,10 +45,11 @@ pip3 install -r requirements.txt
 sudo apt update
 sudo apt install git
 sudo apt install -y curl
-sudo apt install python-pip
+sudo apt install python3-pip
+sudo apt-get install python3.8
 bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
-pip3 install -r requirements.txt
-python3 main.py passsword
+python3.8 -m pip install -r requirements.txt
+python3.8 main.py password
 ```
 
 
@@ -180,7 +181,11 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 - [RSShub](https://docs.rsshub.app/) |数据源RSS|
 
 
+#### 常见问题
 
+https://stackoverflow.com/questions/338768/python-error-importerror-no-module-named
+
+https://blog.csdn.net/qq_35756383/article/details/109135720
 
 
 >支持 https://azz.net/ly233
