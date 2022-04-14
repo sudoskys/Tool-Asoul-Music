@@ -20,7 +20,7 @@ if rss.get('statu'):
     rssAddress = rss.get('RssAddressToken')
         
 
-if data.get('Lock'):
+if data.get('Lock')=="True":
     print("unLocking")
     from mods.locker import AESlock
     import sys
@@ -41,7 +41,7 @@ if RES:
 
 
 from mods.rssKit import rssParse
-if rss.get('statu'):
+if rss.get('statu')=='True':
     Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
     items=rssParse().getItem(rssAddress)
     rssBvidItem=[]
