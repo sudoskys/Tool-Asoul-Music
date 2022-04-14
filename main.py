@@ -21,7 +21,7 @@ if rss.get('statu'):
         
 
 if data.get('Lock')=="True":
-    print("unLocking")
+    print("加密模式启用中--")
     from mods.locker import AESlock
     import sys
     keyword = sys.argv[1]
@@ -47,6 +47,7 @@ push = robotPush(botToken, channalId)
 
 from mods.rssKit import rssParse
 if rss.get('statu')=='True':
+    print("RSS启用中--")
     Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
     items=rssParse().getItem(rssAddress)
     rssBvidItem=[]
