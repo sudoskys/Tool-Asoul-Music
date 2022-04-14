@@ -11,16 +11,15 @@ from mods.uploadFile import Upload
 from pathlib import Path
 
 # 加载配置
-data = yamler().read(str(Path.cwd()) + "/config.yaml")
-looking = data.get("search")  # 探测器传入的数据
-botToken = str(data.get('botToken'))  # 机器人token ，从botfather那里拿
-channalId = str(data.get("channalId"))  # 从getid bot那里看
+datas = yamler().read(os.getcwd() + "/config.yaml")
+looking = datas.get("search")  # 探测器传入的数据
+botToken = str(datas.get('botToken'))  # 机器人token ，从botfather那里拿
+channalId = str(datas.get("channalId"))  # 从getid bot那里看
 
-if data.get('Lock'):
+if datas.get('Lock'):
     print("unLocking")
     from mods.locker import AESlock
     import sys
-
     keyword = sys.argv[1]
     botToken = AESlock().decrypt(str(keyword), botToken.encode('utf-8'))
 
