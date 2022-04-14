@@ -27,7 +27,9 @@ class fileGet(object):
         url = baseUrl + 'bvid=' + bvid + '&cid=' + cid
         # print(url)
         title = self.well(title)
-        audioUrl = requests.get(url).json()['data']['dash']['audio'][0]['baseUrl']
+        audioSong = requests.get(url).json()
+        print(audioSong)
+        audioUrl=audioSong.get('data').get('dash')['audio'][0]['baseUrl']
         opener = urllib.request.build_opener()
         opener.addheaders = [
             ('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:56.0) Gecko/20100101 Firefox/56.0'),
@@ -44,5 +46,5 @@ class fileGet(object):
         ed = time.time()
         # 回调函数
         # print(str(round(ed-st,2))+' seconds download finish:',title)
-        time.sleep(1)
+        time.sleep(3)
         return os.path.join(dirname, title + '.mp3')
