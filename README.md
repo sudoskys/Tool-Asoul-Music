@@ -69,16 +69,20 @@ channalId: -youchannalIDnumberhere
 
 ### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
+
 Tips: 如果您使用action部署，请注意风控策略。
-配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。（申请地址[github openapi token](https://github.com/settings/tokens/new)
+
+配置此action，需要在环境内加secrets，一个是 githubtoken，一个是 email。
+
+申请地址[github openapi token](https://github.com/settings/tokens/new)
 
 
-*Add Repository secrets*
+**Add Repository secrets**
 ```
 ${{ secrets.key }}
 ```
 
-*Add Environment secrets*
+**Add Environment secrets**
 ```
 ${{ secrets.GITHUB_TOKEN }}
 ${{ secrets.GITHUB_EMAIL }}
@@ -86,7 +90,7 @@ ${{ secrets.GITHUB_EMAIL }}
 ```
 
 
-**运行**
+### 运行
 
 ```shell
 python main.py IfYouSetPassword
