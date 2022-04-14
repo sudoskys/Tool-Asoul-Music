@@ -17,7 +17,7 @@ class yamler(object):
 
     def read(self, path):
         with open(path, 'r', encoding='utf-8') as f:
-            result = yaml.load(f.read())
+            result = yaml.full_load(f.read())
         return result
 
     def save(self, path, Data):

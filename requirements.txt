@@ -1,5 +1,5 @@
 requests
-pyyaml
+pyyaml==5.4.1
 pathlib
 pycrypto
 pyTelegramBotAPI
