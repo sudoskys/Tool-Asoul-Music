@@ -1,4 +1,4 @@
-# utf-8
+# encoding: utf-8
 # 本文件负责启动流程，通过tasker协调分离任务。
 import time
 import os

@@ -1,3 +1,4 @@
+# encoding: utf-8
 from mods.core import yamler
 from pathlib import Path
 class apiRenew(object):

@@ -39,6 +39,20 @@ pip3 install -r requirements.txt
 
 ### 2. 准备
 ### 本地部署运行
+**拉取程序**
+
+```bash
+sudo apt update
+sudo apt install git
+sudo apt install -y curl
+sudo apt install python-pip
+bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
+pip3 install -r requirements.txt
+python3 main.py passsword
+```
+
+
+
 **配置程序设置文件**
 
 *USE config.yaml*
@@ -89,13 +103,17 @@ ${{ secrets.GITHUB_EMAIL }}
 
 ```
 
+**配置程序定时运行**
+https://blog.csdn.net/BobYuan888/article/details/88977192
 
-### 运行
+
+
+
+### 题外
 
 ```shell
 python main.py IfYouSetPassword
 ```
-
 - Github Action
 Github action 可以每天6:20运行一次流程（这需要手动取消yaml文件注释），仓库主人加星会触发流程.
 

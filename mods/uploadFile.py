@@ -1,3 +1,4 @@
+# encoding: utf-8
 import time
 import os
 from mods.urlGet import infoGet

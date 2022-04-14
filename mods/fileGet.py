@@ -1,3 +1,4 @@
+# encoding: utf-8
 # From https://github.com/liuyunhaozz/bilibiliDownloader
 
 import os
