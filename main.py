@@ -45,7 +45,6 @@ if task:
             push = robotPush(botToken, channalId)
             Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
             # sync = onedrive(apptoken, appid, appkey)
-            time.sleep(2)
             if not task_todo:
                 print("Tasker nothing to do")
                 apiRenew().cancelTask(k)
@@ -60,9 +59,10 @@ if task:
                     for n, u in enumerate(task_todo):
                         # bv = str(task_todo.get(u).get("bvid"))
                         bvlist.append(u)
+                time.sleep(1)
+                Upload().deal_audio_list(bvlist, '/music', push)
                 try:
-                    #print(bvlist)
-                    Upload().deal_audio_list(bvlist, '/music', push)
+                    print(bvlist)
                 except BaseException as arg:
                     push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
