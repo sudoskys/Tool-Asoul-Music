@@ -145,7 +145,7 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 
 ```
 
-## TODO
+### TODO
 - [x] 重构代码结构
 - [x] 优化冗余代码
 - [x] 优化实现流程
@@ -155,7 +155,7 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 - [ ] 重构 2 次
 - [ ] 重构 3 次
 
-## 鸣谢
+### 鸣谢
 
 - [BilibiliDownloader](https://github.com/liuyunhaozz/bilibiliDownloader)|下载部分参考|
 - [O365](https://github.com/O365/python-o365) |微软云盘同步实现|
@@ -163,11 +163,7 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 
 
 
-------------------------------
 
-![counter](https://count.getloli.com/get/@sudoskys-github-AsoulMusic?theme=moebooru)
-
-------------------------------
 
 >支持 https://azz.net/ly233
 
