@@ -47,7 +47,7 @@ class fileGet(object):
         title = self.well(title)
         audioSong = requests.get(url=apiUrl, headers=self.header).json()
         if not audioSong.get("code")==0:
-            raise Exception("Api 访问异常... Detail:" + str(audioSong))
+            raise Exception("BiliBili Api 访问异常!... \n Detail:" + str(audioSong)+' \n 目标Url:'+ str(apiUrl))
         audioUrl=audioSong.get('data').get('dash')['audio'][0]['baseUrl']
         opener = urllib.request.build_opener()
         opener.addheaders = [
