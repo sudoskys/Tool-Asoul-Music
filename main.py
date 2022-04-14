@@ -41,23 +41,24 @@ if RES:
 
 
 from mods.rssKit import rssParse
-Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
-items=rssParse().getItem(rssAddress)
-rssBvidItem=[]
-if items:
-    for k,v in items.items():
-        rssBvidItem.append(rssParse.get_bili_id(str(v))[0])
-try:
-    if not len(rssBvidItem)==0:
-        Upload().deal_audio_list(rssBvidItem, '/music', push)
-    else:
-        print("RSS No New Data")
-except BaseException as arg:
-    robotPush(botToken, channalId).sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
-finally:
-    shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
-    # mLog("err", "Fail " + n + '  -' + u).wq()
-#rssgeter
+if rss.get('statu'):
+    Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
+    items=rssParse().getItem(rssAddress)
+    rssBvidItem=[]
+    if items:
+        for k,v in items.items():
+            rssBvidItem.append(rssParse.get_bili_id(str(v))[0])
+    try:
+        if not len(rssBvidItem)==0:
+            Upload().deal_audio_list(rssBvidItem, '/music', push)
+        else:
+            print("RSS No New Data")
+    except BaseException as arg:
+        robotPush(botToken, channalId).sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
+    finally:
+        shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
+        # mLog("err", "Fail " + n + '  -' + u).wq()
+    #rssgeter
 
 
 # 处理
