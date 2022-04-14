@@ -13,11 +13,11 @@ class yamler(object):
             print(log)
 
     def rm(self, top):
-        Path(top).unlink(missing_ok=True)
+        Path(top).unlink()
 
     def read(self, path):
         with open(path, 'r', encoding='utf-8') as f:
-            result = yaml.load(f.read(), Loader=yaml.FullLoader)
+            result = yaml.load(f.read())
         return result
 
     def save(self, path, Data):

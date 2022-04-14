@@ -22,8 +22,8 @@ class apiRenew(object):
         file_list=[path for path in m.glob('*.yaml')]
         try:
             for i, k in enumerate(file_list):
-                Path(k).unlink(missing_ok=True)
-            Path("rank/content.yaml").unlink(missing_ok=True)
+                Path(k).unlink()
+            Path("rank/content.yaml").unlink()
         except Exception as err:
             print(err)
         else:
@@ -46,7 +46,7 @@ class apiRenew(object):
            if lists.get(keys):
               m= Path(lists.get(keys))
               if m.is_file(): 
-                 m.unlink(missing_ok=True)
+                 m.unlink()
               if lists.pop(keys):
                  yamler().save("rank/content.yaml", lists)
 

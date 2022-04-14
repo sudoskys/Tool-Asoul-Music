@@ -1,5 +1,5 @@
 import time
-
+import os
 from mods.urlGet import infoGet
 from mods.fileGet import fileGet
 from pathlib import Path
@@ -97,7 +97,6 @@ class robotPush(object):
         self.BOT.send_message(self.objectID, str(msg))
 
     def postVideo(self, file, source, name):
-        import os
         if os.path.exists(file):
             video = open(file, 'rb')
             self.BOT.send_video(self.objectID, video, source, name, name)
