@@ -4,3 +4,4 @@ pathlib
 pycrypto
 pyTelegramBotAPI
 O365
+feedparser

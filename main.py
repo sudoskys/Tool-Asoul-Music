@@ -15,6 +15,10 @@ data = yamler().read(str(Path.cwd()) + "/config.yaml")
 looking = data.get("search")  # 探测器传入的数据
 botToken = str(data.get('botToken'))  # 机器人token ，从botfather那里拿
 channalId = str(data.get("channalId"))  # 从getid bot那里看
+rss = str(data.get("RSS"))  # 从getid bot那里看
+if rss.get('statu'):
+    rssAddress = rss.get('RssAddressToken')
+        
 
 if data.get('Lock'):
     print("unLocking")
@@ -22,14 +26,39 @@ if data.get('Lock'):
     import sys
     keyword = sys.argv[1]
     botToken = AESlock().decrypt(str(keyword), botToken.encode('utf-8'))
+    if rss.get('statu'):
+        rssAddress = AESlock().decrypt(str(keyword), rss.get('RssAddressToken').encode('utf-8'))
+        
 
 # 探测
 RES = apiRenew().apiInit(looking)
 if RES:
     key = apiRenew().doData(RES)
     if key:
-        print('开始执行 '+key)
+        print('resign new task--> '+key)
         # apiRenew().cancelTask(key)
+
+
+
+from mods.rssKit import rssParse
+Path(os.getcwd() + '/music/').mkdir(parents=True, exist_ok=True)
+items=rssParse().getItem(rssAddress)
+rssBvidItem=[]
+if items:
+    for k,v in items.items():
+        rssBvidItem.append(rssParse.get_bili_id(str(v))[0])
+try:
+    if not len(rssBvidItem)==0:
+        Upload().deal_audio_list(rssBvidItem, '/music', push)
+    else:
+        print("RSS No New Data")
+except BaseException as arg:
+    robotPush(botToken, channalId).sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
+finally:
+    shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
+    # mLog("err", "Fail " + n + '  -' + u).wq()
+#rssgeter
+
 
 # 处理
 task = yamler().read("rank/content.yaml")

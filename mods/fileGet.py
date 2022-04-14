@@ -5,7 +5,7 @@ import os
 import time
 import urllib
 import requests
-
+import random
 
 class fileGet(object):
     def __init__(self):
@@ -29,6 +29,18 @@ class fileGet(object):
             'Sec-Fetch-User':'?1',
             'Upgrade-Insecure-Requests':'1',
         }
+    
+    def random_sleep(self, mu=3, sigma=1.7):
+            """正态分布随机睡眠
+            :param mu: 平均值
+            :param sigma: 标准差，决定波动范围
+            """
+            secs = random.normalvariate(mu, sigma)
+            if secs <= 0:
+                secs = mu  # 太小则重置为平均值
+            time.sleep(secs)
+
+        
     def well(self, name):
         # import string
         name = name.replace('"', '_')  # 消除目标对路径的干扰
@@ -66,5 +78,5 @@ class fileGet(object):
         ed = time.time()
         # 回调函数
         # print(str(round(ed-st,2))+' seconds download finish:',title)
-        time.sleep(3)
+        self.random_sleep()
         return os.path.join(dirname, title + '.mp3')

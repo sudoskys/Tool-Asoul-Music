@@ -14,7 +14,6 @@
 
 <h2 align="center">Tool-Asoul-Music</h2>
 
-**[中文](README.md)**
 
 *A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
 
@@ -26,6 +25,8 @@
 
 ## 开始
 
+**[中文](README.md)**
+
 ### 1. 安装要求
 
 **Python 3.7 或更高版本** 
@@ -33,12 +34,13 @@
 python -m pip install --upgrade pip
 pip3 install -r requirements.txt
 ```
-（可选）FFmpeg环境
- [ffmpeg 环境下载](https://ffmpeg.org/download.html#get-packages)。 （仓库Action使用 https://github.com/marketplace/actions/setup-ffmpeg ）
+
+>FFmpeg环境（非必要）
+> [ffmpeg 环境下载](https://ffmpeg.org/download.html#get-packages)。 （仓库Action使用 https://github.com/marketplace/actions/setup-ffmpeg ）
 
 
 ### 2. 准备
-### 本地部署运行
+#### 本地部署运行
 **拉取程序**
 
 ```bash
@@ -52,37 +54,10 @@ python3.8 -m pip install -r requirements.txt
 python3.8 main.py password
 ```
 
+**配置程序定时运行**
+https://blog.csdn.net/BobYuan888/article/details/88977192
 
-
-**配置程序设置文件**
-
-*USE config.yaml*
-```yaml
-Running: true
-channalId: -10086
-onedrive: {statu: open, target: authkey/onedrive.token}
-search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
-
-```
-
-- 配置搜索字段
-```yaml
-search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
-```
-- 配置Onedrive同步
-```yaml
-onedrive: {statu: open, target: authkey/onedrive.token}
-```
-
-- 配置音乐频道推送服务
-1.申请一个Bot,向BotFather索取Token
-2.使用ID机器人查看目标频道ID
-3.将机器人添加至频道并只赋予发消息权限
-```yaml
-channalId: -youchannalIDnumberhere
-```
-
-### 托管 Github Action （不推荐）
+#### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
 
 Tips: 如果您使用action部署，请注意风控策略。
@@ -104,10 +79,53 @@ ${{ secrets.GITHUB_EMAIL }}
 
 ```
 
-**配置程序定时运行**
-https://blog.csdn.net/BobYuan888/article/details/88977192
 
 
+
+### 3.配置程序设置文件
+
+
+*USE config.yaml*
+
+```yaml
+Lock: True
+channalId: -1001741448769
+botToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx5xxxxxxxxxxxxxxxxxxxxxxxxxxxx5'
+#when you select lock:true,you must use aes to encode your ***Token! 
+onedrive: {statu: True, target: authkey/onedrive.token}
+search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
+RSS : {statu: True, RssAddressToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx5xxxxxxxxxxxxxxxxxxxxxxxxxxxx5'}
+```
+
+| Key           |     Value     |    Des       |
+| ------------- | ------------- | ------------- |
+| Lock  | `boolen` | if `True` then ***Token string will be decode by AESTOOL in addition  |
+| channalId  | `-xxxxxxxx` | USE tg@getidsbot  |
+| botToken  | `xxxxxxxx` | USE tg@BotFather  |
+| onedrive  | `xxxxxxxx` | un do  |
+| search  | {dura...ids_2: '28'} | see PS[1] |
+| RSS  | `xxxxxxxx` | statu mean start use and,token must be the link from [Rsshub](docs.rsshub.app) #bili-->fav list https://xxxxx.com/bilibili/fav/xxx/xx |
+
+
+**PS** 
+- [1 -参数详情](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/search/search_request.md#%E5%88%86%E7%B1%BB%E6%90%9C%E7%B4%A2web%E7%AB%AF)
+
+
+
+*生成Token*
+项目的 `docs/newToken.md` 中提供了生成的实例。
+
+*关于推送服务*
+- 配置音乐频道推送服务
+1.申请一个Bot,向BotFather索取Token
+2.使用ID机器人查看目标频道ID
+3.将机器人添加至频道并只赋予发消息权限
+```yaml
+channalId: -youchannalIDnumberhere
+```
+
+
+------------------
 
 
 ### 题外
@@ -168,7 +186,7 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 - [x] 重构代码结构
 - [x] 优化冗余代码
 - [x] 优化实现流程
-- [ ] 支持手动添加
+- [x] 支持手动添加
 - [ ] 支持同步OD盘
 - [ ] 重构 1 次
 - [ ] 重构 2 次

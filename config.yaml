@@ -1,6 +1,7 @@
 Lock: true
 channalId: -1001741448769
 botToken: '9de38329ed1ea60a8d00f4f3e6a5d6d9e07747b88e9b27d0ee7ad1577cf32a2377ebdc9e81ed0b0c0a5fae2132c4d145'
-#when you select lock:true,you must use aes to encode your token! 
-onedrive: {statu: open, target: authkey/onedrive.token}
+#when you select lock:true,you must use aes to encode your ***Token! 
+onedrive: {statu: True, target: authkey/onedrive.token}
 search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
+RSS : {statu: True, RssAddressToken: 'fdc8dc6d3fed2e75e8f0f572c46053520fb214b84b84012187047d6e29ffbbd73b32e07db0e7f8c702ae5bde3496db9e6d7a4b60af93d6eb766334c3074ddbfb'}
