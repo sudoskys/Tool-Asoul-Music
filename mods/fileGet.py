@@ -9,7 +9,19 @@ import requests
 class fileGet(object):
     def __init__(self):
         self.debug = False
-
+        self.header = {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate',
+            'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+            'Cache-Control': 'max-age=0',
+            'DNT': '1',
+            'Referer': 'https://api.bilibili.com/',
+            'Connection': 'keep-alive',
+            'Host': 'api.bilibili.com',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0',
+            'Cookie': '1P_JAR=2022-02-09-02;SEARCH_SAMESITE=CgQIv5QB;ID=CgQIsv5QB0',
+        }
     def well(self, name):
         # import string
         name = name.replace('"', '_')  # 消除目标对路径的干扰
@@ -19,16 +31,17 @@ class fileGet(object):
         return name.translate(table)
 
     def getAudio(self, item, dirname):
-        baseUrl = 'http://api.bilibili.com/x/player/playurl?fnval=16&'
+        baseUrl = 'https://api.bilibili.com/x/player/playurl?fnval=16&'
         if not os.path.exists(dirname):  # 判断是否存在文件夹如果不存在则创建为文件夹
             os.makedirs(dirname)
         st = time.time()
         bvid, cid, title = item[0], item[1], item[2]
-        url = baseUrl + 'bvid=' + bvid + '&cid=' + cid
+        apiUrl = baseUrl + 'bvid=' + bvid + '&cid=' + cid
         # print(url)
         title = self.well(title)
-        audioSong = requests.get(url).json()
-        print(audioSong)
+        audioSong = requests.get(url=apiUrl, headers=self.header).json()
+        if not audioSong.get("code")==0:
+            raise Exception("Api 访问异常... Detail:" + str(audioSong))
         audioUrl=audioSong.get('data').get('dash')['audio'][0]['baseUrl']
         opener = urllib.request.build_opener()
         opener.addheaders = [

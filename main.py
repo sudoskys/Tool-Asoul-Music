@@ -60,9 +60,8 @@ if task:
                         # bv = str(task_todo.get(u).get("bvid"))
                         bvlist.append(u)
                 time.sleep(1)
-                Upload().deal_audio_list(bvlist, '/music', push)
                 try:
-                    print(bvlist)
+                    Upload().deal_audio_list(bvlist, '/music', push)
                 except BaseException as arg:
                     push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
