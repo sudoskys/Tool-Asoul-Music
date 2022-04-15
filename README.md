@@ -17,7 +17,7 @@
 
 *A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
 
-*自动抓取音乐二创并推送，支持手动模式。*
+*自动抓取 BiliBili 音乐二创并推送至频道，支持 自动搜索 与 指定收藏夹。*
 
 重构自上游项目 github.com/sudoskys/BiliBiliVideoToMusic
 
@@ -149,10 +149,10 @@ Github action 可以每天6:20运行一次流程（这需要手动取消yaml文�
 !pip3 install -r requirements.txt
 ```
 
-## 实现逻辑
+## 特性
 
 分离了请求与推送，采用队列制，可以方便开发与扩展。
-
+打包Rss类库，模块式编程，低耦合度。
 
 
 ### 目录结构描述
