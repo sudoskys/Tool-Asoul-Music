@@ -94,6 +94,13 @@ class robotPush(object):
     def sendMessage(self, msg):
         self.BOT.send_message(self.objectID, str(msg))
 
+    def postDoc(self, file):
+        if os.path.exists(file):
+            doc = open(file, 'rb')
+            self.BOT.send_document(self.objectID, doc)
+            doc.close()
+            return file
+
     def postVideo(self, file, source, name):
         if os.path.exists(file):
             video = open(file, 'rb')

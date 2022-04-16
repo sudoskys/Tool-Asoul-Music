@@ -6,17 +6,13 @@ import shutil
 
 from mods.Runner.renew import apiRenew
 from mods.core import yamler
-from mods.core import doTarGz
 from mods.uploadFile import robotPush
 from mods.uploadFile import Upload
 from pathlib import Path
 
 # 加载配置
-Nowtime=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-WrongGet=[] #日志
 data = yamler().read(str(Path.cwd()) + "/config.yaml")
 looking = data.get("search")  # 探测器传入的数据
-dataCallback = data.get("DataCallback")  # 是否启用数据发送备份
 botToken = str(data.get('botToken'))  # 机器人token ，从botfather那里拿
 channalId = str(data.get("channalId"))  # 从getid bot那里看
 rss = (data.get("RSS"))  # 从getid bot那里看
@@ -61,12 +57,12 @@ if rss.get('statu'):
             rssBvidItem.append(rssParse.get_bili_id(str(v))[0])
     try:
         if not len(rssBvidItem)==0:
-            Upload().deal_audio_list(rssBvidItem, '/music', push)
+            print("Rss数据填充完毕")
+            #Upload().deal_audio_list(rssBvidItem, '/music', push)
         else:
             print("RSS No New Data")
     except BaseException as arg:
-        push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
-        WrongGet.append(str(Nowtime)+'\n 任务错误' + str(bvlist) + str(arg))
+        push.sendMessage('Failed init Rss data ' + str(bvlist) + '\n Exception:' + str(arg))
     finally:
         shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
         # mLog("err", "Fail " + n + '  -' + u).wq()
@@ -77,12 +73,10 @@ else:
 
 # 处理
 task = yamler().read("rank/content.yaml")
-
 # 得到任务
 if task:
     for i, k in enumerate(task):
         task_todo = yamler().read(task.get(k))
-        
         # mian(lme, ath, k)
         if not all([botToken, channalId]):
             raise Exception("参数不全!")
@@ -105,10 +99,9 @@ if task:
                         bvlist.append(u)
                 time.sleep(1)
                 try:
-                    Upload().deal_audio_list(bvlist, '/music', push)
+                    #Upload().deal_audio_list(bvlist, '/music', push)
                 except BaseException as arg:
-                    push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
-                    WrongGet.append(str(Nowtime)+'\n 任务错误' + str(bvlist) +"\n"+ str(arg))
+                    push.sendMessage('Failed init tasker ' + str(bvlist) + '\n Exception:' + str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
                 else:
                     apiRenew().cancelTask(k)
@@ -118,25 +111,4 @@ if task:
 # channal id ,please use @getidsbot get this value!
 
 
-# Backup data!
-if dataCallback.get('statu'):
-    userId = dataCallback.get('UserIdToken')
-    try:
-        callBack = robotPush(botToken, userId)
-        filePath = doTarGz().mkTarAll(os.getcwd()+'/'+'-dataBack.tar.gz', os.getcwd()+"/data")
-        callBack.postDoc(filePath)
-        if len(WrongGet)==0:
-            callBack.sendMessage(str(Nowtime) + '执行没有异常')
-        else:
-            info=''
-            for i in WrongGet:
-                info=info + i +'\n'
-            callBack.sendMessage(str(Nowtime) + '执行异常'+ info)
-    except BaseException as arg:
-        print("Fail:数据备份推送执行失败")
-        callBack.sendMessage('Failed post data'+ '\n Exception:' + str(arg))
-                    # mLog("err", "Fail " + n + '  -' + u).wq()
-    else:
-        print("Success:数据备份推送成功")
-else:
-    print("请注意保存data文件夹中的文件...防止重复推送")
+print("数据填充完毕")

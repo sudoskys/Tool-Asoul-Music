@@ -40,6 +40,7 @@ pip3 install -r requirements.txt
 
 
 ### 2. 准备
+
 #### 本地部署运行
 **拉取程序**
 
@@ -57,6 +58,22 @@ python3 main.py password
 sudo apt install python3-pip
 sudo apt-get install python3.8
 ```
+**编辑config.yaml**
+```
+cd Tool-Asuol-Music
+sudo apt install vim
+vim config.yaml
+```
+[Vim使用](https://blog.csdn.net/Algorithmguy/article/details/81937711)
+
+
+**填充/初始化 数据**
+
+只填充不推送数据.其实是main的复制版
+```
+python3 dataInit.py password
+```
+
 
 **配置程序定时运行**
 https://blog.csdn.net/BobYuan888/article/details/88977192
@@ -96,9 +113,11 @@ Lock: True
 channalId: -1001741448769
 botToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx5xxxxxxxxxxxxxxxxxxxxxxxxxxxx5'
 #when you select lock:true,you must use aes to encode your ***Token! 
-onedrive: {statu: True, target: authkey/onedrive.token}
+onedrive: {statu: True, target: authkey/onedrive.token} 
 search: {duration: '1', keyword: ASOUL 原创曲, order: pubdate, page: '1', search_type: video,  tids_1: '3', tids_2: '28'}
 RSS : {statu: True, RssAddressToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx5xxxxxxxxxxxxxxxxxxxxxxxxxxxx5'}
+DataCallback : {statu: True, UserIdToken: 'xxxxxxxxxxxxxxxxx'}
+
 ```
 
 | Key           |     Value     |    Des       |
@@ -106,14 +125,23 @@ RSS : {statu: True, RssAddressToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx5xxxxxxxxxxxxx
 | Lock  | `boolen` | if `True` then ***Token string will be decode by AESTOOL in addition  |
 | channalId  | `-xxxxxxxx` | USE tg@getidsbot  |
 | botToken  | `xxxxxxxx` | USE tg@BotFather  |
-| onedrive  | `xxxxxxxx` | un do  |
+| onedrive  | `xxxxxxxx` | un do 还没做  |
 | search  | {dura...ids_2: '28'} | see PS[1] |
 | RSS  | `xxxxxxxx` | statu mean start use and,token must be the link from [Rsshub](docs.rsshub.app) #bili-->fav list https://xxxxx.com/bilibili/fav/xxx/xx |
+|DataCallback | `statu: True, UserIdToken: ''` | 发送执行的缓存数据(比如服务到期但是没有同步数据see PS[2])。 Token是用户ID或者某些频道ID（需要拉机器人入频道） use tg@getidsbot |
 
 
-**PS** 
+**PS**
+
 - [1 -参数详情](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/search/search_request.md#%E5%88%86%E7%B1%BB%E6%90%9C%E7%B4%A2web%E7%AB%AF)
+- 2.请务必先start机器人对话
 
+*填充数据*
+
+只填充不推送数据.
+```
+python3 dataInit.py 
+```
 
 
 *生成Token*
