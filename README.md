@@ -138,8 +138,7 @@ cron 服务的启动与停止，命令如下
 ```
 00 08   * * *  /bin/sh /root/Tool-Asoul-Music/cron.sh
 ```
-
-https://blog.csdn.net/BobYuan888/article/details/88977192
+https://blog.csdn.net/xys2333/article/details/112469461
 https://blog.csdn.net/GX_1_11_real/article/details/86535942
 
 **记得在main文件头部添加类似语句**
