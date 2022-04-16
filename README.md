@@ -70,7 +70,7 @@ bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setu
 
 **编辑config.yaml**
 ```bash
-cd Tool-Asuol-Music
+cd Tool-Asoul-Music
 sudo apt install vim
 vim config.yaml
 ```
