@@ -113,12 +113,12 @@ crontab -e
 >脚本在执行时,由于是通过crontab去执行的,他的执行目录会变成当前用户的家目录,如果是root,就会在/root/下执行.
 
 所以把执行python的命令放到shell脚本里，然后crontab 定时执行
-详见`corn.sh`
+详见`cron.sh`
 
 *cron用法*
 
 ```
-chmod +x corn.sh
+chmod +x cron.sh
 ```
 
 *使用`crontab -e`*
