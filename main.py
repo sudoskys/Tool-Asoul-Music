@@ -133,6 +133,7 @@ if dataCallback.get('statu'):
         if HaveNew:
             filePath = doTarGz().mkTarAll(os.getcwd()+'/'+'-dataBack.tar.gz', os.getcwd()+"/data")
             callBack.postDoc(filePath)
+            
         if len(WrongGet)==0:
             # callBack.sendMessage(str(Nowtime) + '执行没有异常')
         else:
