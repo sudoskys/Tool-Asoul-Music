@@ -121,6 +121,18 @@ crontab -e
 chmod +x cron.sh
 ```
 
+cron 服务的启动与停止，命令如下
+    1）service cron start  /*启动服务*/
+
+    2）service cron stop /*关闭服务*/
+
+    3）service cron restart /*重启服务*/
+
+    4）service cron reload /*重新载入配置*/
+
+    5）service cron status /*查看crond状态*/ 
+
+
 *使用`crontab -e`*
 
 ```
