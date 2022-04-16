@@ -16,12 +16,16 @@ Nowtime=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 WrongGet=[] #日志
 data = yamler().read(str(Path.cwd()) + "/config.yaml")
 looking = data.get("search")  # 探测器传入的数据
+
 dataCallback = data.get("DataCallback")  # 是否启用数据发送备份
+
 botToken = str(data.get('botToken'))  # 机器人token ，从botfather那里拿
 channalId = str(data.get("channalId"))  # 从getid bot那里看
 rss = (data.get("RSS"))  # 从getid bot那里看
 if rss.get('statu'):
     rssAddress = rss.get('RssAddressToken')
+if dataCallback.get('statu'):
+    userId = dataCallback.get('UserIdToken')
         
 
 
@@ -33,6 +37,8 @@ if data.get('Lock'):
     botToken = AESlock().decrypt(str(keyword), botToken.encode('utf-8'))
     if rss.get('statu'):
         rssAddress = AESlock().decrypt(str(keyword), rss.get('RssAddressToken').encode('utf-8'))
+    if dataCallback.get('statu'):
+        userId = AESlock().decrypt(str(keyword), dataCallback.get('UserIdToken').encode('utf-8'))
         
 
 # 探测
@@ -61,6 +67,7 @@ if rss.get('statu'):
             rssBvidItem.append(rssParse.get_bili_id(str(v))[0])
     try:
         if not len(rssBvidItem)==0:
+            HaveNew=True
             Upload().deal_audio_list(rssBvidItem, '/music', push)
         else:
             print("RSS No New Data")
@@ -95,6 +102,7 @@ if task:
                 # sync.lock_token()
                 shutil.rmtree(os.getcwd() + '/music/', ignore_errors=False, onerror=None)  # 删除
             else:
+                HaveNew=True
                 # print(task_todo)
                 # print(type(task_todo))
                 # 传入
@@ -120,13 +128,13 @@ if task:
 
 # Backup data!
 if dataCallback.get('statu'):
-    userId = dataCallback.get('UserIdToken')
+    callBack = robotPush(botToken, userId)
     try:
-        callBack = robotPush(botToken, userId)
-        filePath = doTarGz().mkTarAll(os.getcwd()+'/'+'-dataBack.tar.gz', os.getcwd()+"/data")
-        callBack.postDoc(filePath)
+        if HaveNew:
+            filePath = doTarGz().mkTarAll(os.getcwd()+'/'+'-dataBack.tar.gz', os.getcwd()+"/data")
+            callBack.postDoc(filePath)
         if len(WrongGet)==0:
-            callBack.sendMessage(str(Nowtime) + '执行没有异常')
+            # callBack.sendMessage(str(Nowtime) + '执行没有异常')
         else:
             info=''
             for i in WrongGet:
