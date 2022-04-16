@@ -42,6 +42,9 @@ pip3 install -r requirements.txt
 ### 2. 准备
 
 #### 本地部署运行
+
+你也许可以Fork本项目，修改下面的命令与setup.sh中的内容～
+
 **拉取程序**
 
 ```bash
