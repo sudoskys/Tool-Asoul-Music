@@ -17,7 +17,7 @@
 
 *A tool for telegram channal delivery,and it can help you to deliver the audio file by asking bilibili api.*
 
-*自动抓取 BiliBili 音乐二创并推送至频道，支持 自动搜索 与 指定收藏夹。*
+*自动抓取 BiliBili 音乐二创并推送至频道，支持 自动搜索 与 指定收藏夹。有完善的错误处理与数据备份*
 
 重构自上游项目 github.com/sudoskys/BiliBiliVideoToMusic
 
