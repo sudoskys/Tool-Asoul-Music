@@ -65,7 +65,7 @@ sudo apt-get install python3.8
 **重装最新版本(会删除数据，请谨慎)**
 ```bash
 rm -r Tool-Asoul-Music
-bash -c "$(curl -L raw.githubusercontent.com/sudoskys/
+bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
 ```
 
 **编辑config.yaml**
