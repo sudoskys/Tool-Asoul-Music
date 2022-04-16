@@ -48,6 +48,7 @@ sudo apt update
 sudo apt install git
 sudo apt install -y curl
 bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
+cd Tool-Asuol-Music
 python3 -m pip install -r requirements.txt
 python3 main.py password
 ```
