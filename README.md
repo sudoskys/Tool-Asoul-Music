@@ -29,7 +29,7 @@
 
 ### 1. 安装要求
 
-**Python 3.7 或更高版本** 
+**Python 3.8 或更高版本** 
 ```shell
 python -m pip install --upgrade pip
 pip3 install -r requirements.txt
@@ -47,11 +47,14 @@ pip3 install -r requirements.txt
 sudo apt update
 sudo apt install git
 sudo apt install -y curl
+bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
+python3 -m pip install -r requirements.txt
+python3 main.py password
+```
+旧机子可选
+```
 sudo apt install python3-pip
 sudo apt-get install python3.8
-bash -c "$(curl -L raw.githubusercontent.com/sudoskys/Tool-Asoul-Music/main/setup.sh)"
-python3.8 -m pip install -r requirements.txt
-python3.8 main.py password
 ```
 
 **配置程序定时运行**
