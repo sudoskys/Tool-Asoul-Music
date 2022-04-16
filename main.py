@@ -4,6 +4,9 @@ import time
 import os
 import shutil
 
+#import sys
+#sys.path.insert(0, '/root/Tool-Asoul-Music')
+
 from mods.Runner.renew import apiRenew
 from mods.core import yamler
 from mods.core import doTarGz

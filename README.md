@@ -89,6 +89,14 @@ python3 dataInit.py password
 
 https://blog.csdn.net/BobYuan888/article/details/88977192
 
+记得在main文件头部添加类似语句
+
+```
+import sys
+sys.path.insert(0, '/root/Tool-Asoul-Music')
+```
+
+
 #### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
 
