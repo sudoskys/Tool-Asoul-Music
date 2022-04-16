@@ -54,12 +54,19 @@ python3 -m pip install -r requirements.txt
 python3 main.py password
 ```
 旧机子可选
-```
+```bash
 sudo apt install python3-pip
 sudo apt-get install python3.8
 ```
-**编辑config.yaml**
+
+**重装最新版本(会删除数据，请谨慎)**
+```bash
+rm -r Tool-Asoul-Music
+bash -c "$(curl -L raw.githubusercontent.com/sudoskys/
 ```
+
+**编辑config.yaml**
+```bash
 cd Tool-Asuol-Music
 sudo apt install vim
 vim config.yaml
@@ -70,7 +77,7 @@ vim config.yaml
 **填充/初始化 数据**
 
 只填充不推送数据.其实是main的复制版
-```
+```bash
 python3 dataInit.py password
 ```
 
