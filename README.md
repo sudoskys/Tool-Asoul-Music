@@ -87,7 +87,44 @@ python3 dataInit.py password
 
 **配置程序定时运行**
 
+对于乌班图，配置如下(不同服务器不同路径呃)
+
+授权
+```bash
+cd Tool-Asoul-Music
+chmod 777 main.py 
+date
+```
+
+crontab 执行
+```bash
+crontab -l
+crontab -e
+
+```
+
+每天5和17执行任务语法
+
+```0 5,17 * * *  /user/local/python  /path/xxx.py```
+
+如果脚本中会有涉及读取配置文件或者读写文件的动作,一般定时任务都不会执行. 
+脚本在执行时,由于是通过crontab去执行的,他的执行目录会变成当前用户的家目录,如果是root,就会在/root/下执行.
+
+执行python的命令放到shell脚本里，然后crontab 定时执行
+详见`corn.sh`
+
+cron用法
+
+```
+chomd +x corn.sh
+```
+使用crontab -e
+```
+00 08   * * *  /bin/sh /root/Tool-Asoul-Music/cron.sh
+```
+
 https://blog.csdn.net/BobYuan888/article/details/88977192
+https://blog.csdn.net/GX_1_11_real/article/details/86535942
 
 记得在main文件头部添加类似语句
 
@@ -95,7 +132,7 @@ https://blog.csdn.net/BobYuan888/article/details/88977192
 import sys
 sys.path.insert(0, '/root/Tool-Asoul-Music')
 ```
-
+记得在cron.sh里面修改密码
 
 #### 托管 Github Action （不推荐）
 * Fork 本仓库并设置secrets
