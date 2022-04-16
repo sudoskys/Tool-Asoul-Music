@@ -14,6 +14,7 @@ from pathlib import Path
 # 加载配置
 Nowtime=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 WrongGet=[] #日志
+HaveNew=False
 data = yamler().read(str(Path.cwd()) + "/config.yaml")
 looking = data.get("search")  # 探测器传入的数据
 
