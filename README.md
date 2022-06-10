@@ -19,6 +19,9 @@
 
 *自动抓取 BiliBili 音乐二创并推送至频道，支持 自动搜索 与 指定收藏夹。有完善的错误处理与数据备份*
 
+>音乐数据格式实为m4a,请注意。
+>禁止使用本项目执行商业活动，请注意。
+
 重构自上游项目 github.com/sudoskys/BiliBiliVideoToMusic
 
 
@@ -311,4 +314,3 @@ https://blog.csdn.net/qq_35756383/article/details/109135720
 
 >支持 https://azz.net/ly233
 
-- 更新声明：禁止商用
