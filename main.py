@@ -119,6 +119,8 @@ if task:
                 try:
                     Upload().deal_audio_list(bvlist, '/music', push)
                 except BaseException as arg:
+                    if not bvlist:
+                        bvlist='Unknow'
                     push.sendMessage('Failed post ' + str(bvlist) + '\n Exception:' + str(arg))
                     WrongGet.append(str(Nowtime)+'\n 任务错误' + str(bvlist) +"\n"+ str(arg))
                     # mLog("err", "Fail " + n + '  -' + u).wq()
