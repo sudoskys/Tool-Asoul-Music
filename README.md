@@ -19,6 +19,8 @@
 
 *自动抓取 BiliBili 音乐二创并推送至频道，支持 自动搜索 与 指定收藏夹。有完善的错误处理与数据备份*
 
+*支持本地同步收藏夹库*
+
 >音乐数据格式实为m4a,请注意。
 >禁止使用本项目执行商业活动，请注意。
 
@@ -42,11 +44,16 @@ pip3 install -r requirements.txt
 > [ffmpeg 环境下载](https://ffmpeg.org/download.html#get-packages)。 （仓库Action使用 https://github.com/marketplace/actions/setup-ffmpeg ）
 
 
+
+
 ### 2. 准备
 
 #### 本地部署运行
 
 你也许可以Fork本项目，修改下面的命令与setup.sh中的内容～
+
+文件中 `local.py` 为本地同步收藏夹歌曲版本，`main.py` 提供完整推送服务。
+
 
 **拉取程序**
 

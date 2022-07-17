@@ -21,7 +21,7 @@ class Upload(object):
         self.IsDebug = False
     #    def callback(self,filePath):
     #        print(filePath)
-    def deal_audio_list(self, bvid_list, savePath, callb):
+    def deal_audio_list(self, bvid_list, savePath, callb,local):
         infoList = infoGet().getInformation(bvid_list)
         sath = str(Path().cwd()) + savePath
         for item in infoList:
@@ -29,7 +29,8 @@ class Upload(object):
             st = time.time()
             musicPath = fileGet().getAudio(item, sath)
             bvid, cid, title = item[0], item[1], item[2]
-            callb.postAudio(musicPath, title + '\n' + 'https://www.bilibili.com/video/' + str(bvid) + "\n #MusicFinder #Automatic #V5 ", title)  # +
+            if not local:
+               callb.postAudio(musicPath, title + '\n' + 'https://www.bilibili.com/video/' + str(bvid) + "\n #MusicFinder #Automatic #V5 ", title)  # +
             # '\nSync  ' + '<a href="' + syncurl + '">link here</a>', mtitle)
             ed = time.time()
             # print('Download Finish! Time consuming:',str(round(ed-st,2))+' seconds')

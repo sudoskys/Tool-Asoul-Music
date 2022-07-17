@@ -72,7 +72,7 @@ if rss.get('statu'):
     try:
         if not len(rssBvidItem)==0:
             HaveNew=True
-            Upload().deal_audio_list(rssBvidItem, '/music', push)
+            Upload().deal_audio_list(rssBvidItem, '/music', push, local=Fasle)
         else:
             print("RSS No New Data")
     except BaseException as arg:
@@ -117,7 +117,7 @@ if task:
                         bvlist.append(u)
                 time.sleep(1)
                 try:
-                    Upload().deal_audio_list(bvlist, '/music', push)
+                    Upload().deal_audio_list(bvlist, '/music', push, local=Fasle)
                 except BaseException as arg:
                     if not bvlist:
                         bvlist='Unknow'
